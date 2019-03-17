@@ -34,7 +34,7 @@ window.onload = function () {
 
 /**
  * Check a digit against the current index of Pi
- * @param {Number} digit A digit from 0-9
+ * @param {number} digit A digit from 0-9
  */
 function checkDigit(digit) {
     // Is the latest key-press digit the same as the current index in Pi
@@ -53,7 +53,7 @@ function checkDigit(digit) {
 
 /**
  * Add a correct digit to the output of Pi and update the current score
- * @param {Number} digit A digit from 0-9
+ * @param {number} digit A digit from 0-9
  */
 function addDigit(digit) {
     outputElement.innerHTML += digit;
