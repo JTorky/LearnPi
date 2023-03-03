@@ -37,3 +37,13 @@ html, body {
     color: #888;
     font-size: 16pt;
 }
+
+.hidden-input {
+    width: 0px;
+    opacity: 0;
+}
+
+.reset-button {
+    display: none;
+    font-size: 16pt;
+}

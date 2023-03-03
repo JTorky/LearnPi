@@ -12,11 +12,17 @@
 </head>
 
 <body>
-    <div class="instructions"><label>Current: </label><span id="current">0</span><label>, Max: </label><span id="max">0</span><label>, [R] Reset</label></div>
+    <div class="instructions">
+        <label>Current: </label><span id="current">0</span>
+        <label>, Max: </label><span id="max">0</span>
+        <label id="reset-label">, [R] Reset</label>
+        <button class="reset-button" id="reset-button" onclick="reset()">Reset</button>
+    </div>
     <div class="container">
         <div id="output" class="display output"><span>3.</span></div>
         <div id="next" class="display next"></div>
     </div>
+    <input type="number" pattern="[0-9]*" class="hidden-input" id="hidden-input">
 </body>
 
 </html>

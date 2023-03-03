@@ -7,17 +7,13 @@ var gameOver = false;
 var currentElement;
 var maxElement;
 var nextElement;
+var inputElement;
 var outputElement;
+var resetButton;
+var resetLabel;
+var isTouch;
 
-document.addEventListener('keydown', (e) => {
-    if (/^[0-9]$/i.test(e.key) && !gameOver) {
-        // 0-9 and not game over, check the digits
-        checkDigit(e.key);
-    } else if (/^r$/i.test(e.key) && gameOver) {
-        // r/R and game is over, reset the game
-        reset();
-    }
-})
+document.addEventListener('keydown', keyHandler);
 
 window.onload = function () {
     // Get the elements to display info
@@ -25,11 +21,37 @@ window.onload = function () {
     maxElement = document.getElementById("max");
     nextElement = document.getElementById("next");
     outputElement = document.getElementById("output");
+    resetButton = document.getElementById("reset-button");
+    resetLabel = document.getElementById("reset-label");
 
     // Initialise some of the elements
     highest = getHighest() || 0;
     maxElement.innerHTML = highest;
     currentElement.innerHTML = 0;
+
+    // Is this a touchscreen
+    isTouch = 'ontouchstart' in document.documentElement;
+    if (isTouch) {
+        //Focus the hidden input to show the touch keyboard
+        inputElement = document.getElementById("hidden-input");
+        inputElement.focus();
+        resetLabel.style.display = 'none';
+        resetButton.style.display = 'inline-block'
+    }
+}
+
+/**
+ * Handle a keyboard input
+ * @param {event} e keyboard event
+ */
+function keyHandler(e) {
+    if (/^[0-9]$/i.test(e.key) && !gameOver) {
+        // 0-9 and not game over, check the digits
+        checkDigit(e.key);
+    } else if (/^r$/i.test(e.key) && gameOver) {
+        // r/R and game is over, reset the game
+        reset();
+    }
 }
 
 /**
@@ -88,6 +110,11 @@ function reset() {
     currentElement.innerHTML = "0";
     i = 0;
     gameOver = false;
+
+    if (isTouch) {
+        inputElement.value = '';
+        inputElement.focus();
+    }
 }
 
 /**
