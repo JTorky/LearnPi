@@ -56,7 +56,17 @@ function checkDigit(digit) {
  * @param {number} digit A digit from 0-9
  */
 function addDigit(digit) {
-    outputElement.innerHTML += digit;
+    // Create a new span to hold the number
+    const newSpan = document.createElement('span');
+    newSpan.innerText = digit;
+
+    // Calculate the colour, this cycles every 36 numbers but could be dynamic e.g. proportional to current max or approaching green near the max
+    const hue = (i % 36) * 10;
+    const style = `color: hsl(${hue}, 50%, 50%)`;
+    newSpan.style = style;
+
+    // Append the span
+    outputElement.appendChild(newSpan);
     currentElement.innerHTML = i;
 }
 
