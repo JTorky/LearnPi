@@ -97,7 +97,22 @@ function addDigit(digit) {
  */
 function wrong() {
     // Show the next 4 digits of Pi
-    nextElement.innerHTML = PI.substring(i, i + 4);
+    // nextElement.innerHTML = PI.substring(i, i + 4);
+
+    const nextNumbers = PI.substring(i, i + 100);
+
+    for (let j = 0; j < nextNumbers.length; j++) {
+        const n = nextNumbers[j];
+        // Create a new span to hold the number
+        const newSpan = document.createElement('span');
+        newSpan.innerText = n;
+
+        const fontSize = 32 * Math.pow(0.95, j);
+        newSpan.style.fontSize = `${fontSize}pt`;
+
+        nextElement.appendChild(newSpan);
+    }
+
     gameOver = true;
 }
 
