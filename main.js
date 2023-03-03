@@ -9,15 +9,15 @@ var maxElement;
 var nextElement;
 var outputElement;
 
-document.onkeypress = function (e) {
-    if (e.which >= 48 && e.which <= 57 && !gameOver) {
+document.addEventListener('keydown', (e) => {
+    if (/^[0-9]$/i.test(e.key) && !gameOver) {
         // 0-9 and not game over, check the digits
         checkDigit(e.key);
-    } else if ((e.which == 114 || e.which == 82) && gameOver) {
+    } else if (/^r$/i.test(e.key) && gameOver) {
         // r/R and game is over, reset the game
         reset();
     }
-}
+})
 
 window.onload = function () {
     // Get the elements to display info
