@@ -83,7 +83,7 @@ function addDigit(digit) {
     newSpan.innerText = digit;
 
     // Calculate the colour, this cycles every 36 numbers but could be dynamic e.g. proportional to current max or approaching green near the max
-    const hue = (i % 36) * 10;
+    const hue = ((i + 18) % 36) * 10;
     const style = `color: hsl(${hue}, 50%, 50%)`;
     newSpan.style = style;
 
